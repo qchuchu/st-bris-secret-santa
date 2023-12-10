@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { members } from "./members.ts";
+import { members, FAMILY_GROUPS } from "./members.ts";
 
 type SecretSantaMap = {
   [key: string]: string;
@@ -10,6 +10,7 @@ function generateRandomSecretSanta(members: string[]): SecretSantaMap | null {
   const shuffledMembers = [...members];
   let currentIndex = shuffledMembers.length;
 
+  // Fisher-Yates shuffle algorithm
   while (currentIndex !== 0) {
     const randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
@@ -20,11 +21,24 @@ function generateRandomSecretSanta(members: string[]): SecretSantaMap | null {
     ];
   }
 
-  // Check if any member is assigned to themselves
+  // Check constraints
   for (let i = 0; i < members.length; i++) {
-    if (shuffledMembers[i] === members[i]) {
-      // If someone is assigned to themselves, retry the process
-      return generateRandomSecretSanta(members);
+    const sender = members[i];
+    const receiver = shuffledMembers[i];
+
+    // Check if someone is assigned to themselves
+    if (sender === receiver) {
+      return generateRandomSecretSanta(members); // Retry the process
+    }
+
+    // Check if members from the same group are picking each other
+    const senderGroup = FAMILY_GROUPS.find((group) => group.includes(sender));
+    const receiverGroup = FAMILY_GROUPS.find((group) =>
+      group.includes(receiver)
+    );
+
+    if (senderGroup === receiverGroup) {
+      return generateRandomSecretSanta(members); // Retry the process
     }
   }
 
