@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { members } from "./members";
+import { members } from "./members.ts";
 
 type SecretSantaMap = {
   [key: string]: string;
