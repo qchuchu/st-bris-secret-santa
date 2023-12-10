@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Kalnia');
+@import url('https://fonts.googleapis.com/css?family=Jost');
+
+body {
+    margin: 0;
+    font-family: "Jost";
+}
+
+h1, h2 {
+    font-family: "Kalnia";
+}
+
+.wrapper {
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #CC231E;
+color: white;
+}
+
+/* CSS */
+.button-24 {
+  background: #2AC53A;
+  border: 1px solid #FFFFFF;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Jost";
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color: #FFFFFF;
+  background-position: 0 0;
+  color: #2AC53A;
+}
+
+.button-24:active {
+  opacity: .5;
+}
